@@ -1,0 +1,18 @@
+Package: timer
+Type: Package
+Title: Timers
+Version: 1.0
+Description: Some basic count down timers and a count up timer.
+License: BSL-1.0
+Depends:
+    R (>= 3.0.0)
+Imports:
+    utils
+Enhances:
+    beepr
+ByteCompile: yes
+Author: Drew Schmidt
+Maintainer: Drew Schmidt <wrathematics@gmail.com>
+URL: https://github.com/wrathematics/timer
+BugReports: https://github.com/wrathematics/timer/issues
+RoxygenNote: 7.1.0
