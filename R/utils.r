@@ -1,6 +1,6 @@
 datetime_to_seconds = function(dt) as.numeric(as.POSIXct(dt, origin="1970-01-01"))
 
-clock = function() datetime_to_seconds(Sys.time())
+clock_seconds = function() datetime_to_seconds(Sys.time())
 
 seconds_to_clockface = function(s)
 {
@@ -11,12 +11,17 @@ seconds_to_clockface = function(s)
   list(hours=hours, minutes=minutes, seconds=seconds)
 }
 
+get_clockface = function(cf, label, reset=TRUE)
+{
+  sprintf("%s%02d:%02d:%02d", label, cf$hours, cf$minutes, cf$seconds)
+}
+
 print_clockface = function(cf, label, reset=TRUE)
 {
   if (reset)
     cat("\r")
   
-  cat(sprintf("%s%02d:%02d:%02d", label, cf$hours, cf$minutes, cf$seconds))
+  cat(get_clockface(cf, label, reset))
 }
 
 audio_ping = function()
@@ -61,11 +66,11 @@ timer_naive = function(hours, minutes, seconds)
 timer_clock = function(hours, minutes, seconds)
 {
   total_seconds = 60*60*hours + 60*minutes + seconds
-  t_top = clock() + total_seconds
+  t_top = clock_seconds() + total_seconds
   
   while (TRUE)
   {
-    t = t_top - clock()
+    t = t_top - clock_seconds()
     if (t <= 0)
       break
     
@@ -79,13 +84,13 @@ timer_clock = function(hours, minutes, seconds)
   
   while (TRUE)
   {
-    t = clock() - t_top + 1
+    t = clock_seconds() - t_top + 1
     cf = seconds_to_clockface(t)
     print_clockface(cf, "time over: ")
     
     cat("    ")
     
-    t = clock() - t_top + total_seconds + 1
+    t = clock_seconds() - t_top + total_seconds + 1
     cf = seconds_to_clockface(t)
     print_clockface(cf, "total time: ", reset=FALSE)
     Sys.sleep(1)

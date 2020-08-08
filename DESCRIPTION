@@ -9,6 +9,7 @@ Depends:
 Imports:
     utils
 Enhances:
+    shiny,
     beepr
 ByteCompile: yes
 Author: Drew Schmidt
