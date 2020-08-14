@@ -5,11 +5,11 @@
 #' @export
 counter = function()
 {
-  t0 = clock()
+  t0 = clock_seconds()
   
   while (TRUE)
   {
-    t = clock() - t0
+    t = clock_seconds() - t0
     cf = seconds_to_clockface(t)
     print_clockface(cf, "")
     Sys.sleep(1)
