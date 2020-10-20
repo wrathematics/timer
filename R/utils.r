@@ -26,6 +26,7 @@ print_clockface = function(cf, label, reset=TRUE)
 
 audio_ping = function()
 {
+  cat("\a")
   if ("beepr" %in% utils::installed.packages())
     beepr::beep()
 }
