@@ -38,3 +38,9 @@ Count up timer:
 ```r
 timer::counter()
 ```
+
+Set an alarm for the specified time of day ("HH:MM" or "HH:MM:SS"):
+
+```r
+timer::alarm(timestr)
+```
