@@ -26,7 +26,22 @@ shinyServer(function(input, output, session){
     state$h = as.numeric(input$hbox)
     state$m = as.numeric(input$mbox)
     state$s = as.numeric(input$sbox)
+  })
+  
+  observeEvent(input$button_22, {
+    state$t_first = timer:::clock_seconds()
+    state$beeps = 1
     
+    state$h = state$s = 0
+    state$m = 22
+  })
+  
+  observeEvent(input$button_90, {
+    state$t_first = timer:::clock_seconds()
+    state$beeps = 1
+    
+    state$h = state$s = 0
+    state$m = 90
   })
   
   output$countdown = renderUI({
