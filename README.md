@@ -31,7 +31,7 @@ timer::minutes(minutes)
 timer::seconds(seconds)
 ```
 
-The timers will produce an audio ping at the end of the count down so long as the [beepr](https://cran.r-project.org/web/packages/beepr/index.html) package is available at run time.
+The timers will produce an audio ping at the end of the count down so long as the [beepr](https://cran.r-project.org/web/packages/beepr/index.html) package is available at run time. You can also set the argument `recur=TRUE` for intervals.
 
 Count up timer:
 
