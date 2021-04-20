@@ -7,16 +7,18 @@
 \alias{seconds}
 \title{timer}
 \usage{
-timer(hours = 0, minutes = 0, seconds = 0)
+timer(hours = 0, minutes = 0, seconds = 0, recur = FALSE)
 
-hours(hours)
+hours(hours, recur = FALSE)
 
-minutes(minutes)
+minutes(minutes, recur = FALSE)
 
-seconds(seconds)
+seconds(seconds, recur = FALSE)
 }
 \arguments{
 \item{hours, minutes, seconds}{Time to count down from.}
+
+\item{recur}{Should the timer repeat?}
 }
 \description{
 A count down timer.
