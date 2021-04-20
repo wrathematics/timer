@@ -33,55 +33,44 @@ audio_ping = function()
 
 
 
-timer_naive = function(hours, minutes, seconds)
+timer_clock = function(hours, minutes, seconds, recur=FALSE)
 {
-  while (hours > 0 || minutes > 0 || seconds > 0)
-  {
-    if (seconds == 0)
-    {
-      if (minutes > 0)
-      {
-        minutes = minutes - 1
-        seconds = 60
-      }
-      else if (minutes == 0 && hours > 0)
-      {
-        hours = hours - 1
-        minutes = 59
-        seconds = 60
-      }
-    }
-  
-    seconds = seconds - 1
-    cf = list(hours=hours, minutes=minutes, seconds=seconds)
-    print_clockface(cf, "time remaining: ")
-    Sys.sleep(1)
-  }
-  
-  cat("\n")
-  invisible(TRUE)
-}
-
-
-
-timer_clock = function(hours, minutes, seconds)
-{
+  spacer = "    "
   total_seconds = 60*60*hours + 60*minutes + seconds
-  t_top = clock_seconds() + total_seconds
   
+  ct = 0L
   while (TRUE)
   {
-    t = t_top - clock_seconds()
-    if (t <= 0)
-      break
+    t_top = clock_seconds() + total_seconds
+    tot = seconds_to_clockface(total_seconds*ct)
     
-    cf = seconds_to_clockface(t)
-    print_clockface(cf, "time remaining: ")
-    Sys.sleep(1)
+    while (TRUE)
+    {
+      t = t_top - clock_seconds()
+      if (t <= 0)
+      break
+      
+      cf = seconds_to_clockface(t)
+      if (isTRUE(recur))
+      {
+        print_clockface(cf, paste0("(reps ", ct, ")", spacer, "countdown: "))
+        print_clockface(tot, paste0(spacer, "total: "), reset=FALSE)
+      }
+      else
+        print_clockface(cf, "countdown: ")
+      
+      Sys.sleep(1)
+    }
+    
+    audio_ping()
+    if (isFALSE(recur))
+    {
+      cat("\n")
+      break
+    }
+    
+    ct = ct + 1L
   }
-  
-  cat("\n")
-  audio_ping()
   
   while (TRUE)
   {
@@ -89,7 +78,7 @@ timer_clock = function(hours, minutes, seconds)
     cf = seconds_to_clockface(t)
     print_clockface(cf, "time over: ")
     
-    cat("    ")
+    cat(spacer)
     
     t = clock_seconds() - t_top + total_seconds + 1
     cf = seconds_to_clockface(t)
