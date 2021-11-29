@@ -7,18 +7,20 @@
 \alias{seconds}
 \title{timer}
 \usage{
-timer(hours = 0, minutes = 0, seconds = 0, recur = FALSE)
+timer(hours = 0, minutes = 0, seconds = 0, recur = FALSE, over_time = TRUE)
 
-hours(hours, recur = FALSE)
+hours(hours, recur = FALSE, over_time = TRUE)
 
-minutes(minutes, recur = FALSE)
+minutes(minutes, recur = FALSE, over_time = TRUE)
 
-seconds(seconds, recur = FALSE)
+seconds(seconds, recur = FALSE, over_time = TRUE)
 }
 \arguments{
 \item{hours, minutes, seconds}{Time to count down from.}
 
 \item{recur}{Should the timer repeat?}
+
+\item{over_time}{Display the time elapsed since the alarm?}
 }
 \description{
 A count down timer.
