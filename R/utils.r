@@ -33,7 +33,7 @@ audio_ping = function()
 
 
 
-timer_clock = function(hours, minutes, seconds, recur=FALSE)
+timer_clock = function(hours, minutes, seconds, recur=FALSE, over_time=TRUE)
 {
   spacer = "    "
   total_seconds = 60*60*hours + 60*minutes + seconds
@@ -72,7 +72,7 @@ timer_clock = function(hours, minutes, seconds, recur=FALSE)
     ct = ct + 1L
   }
   
-  while (TRUE)
+  while (over_time)
   {
     t = clock_seconds() - t_top + 1
     cf = seconds_to_clockface(t)
