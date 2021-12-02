@@ -12,8 +12,9 @@ Enhances:
     shiny,
     beepr
 ByteCompile: yes
-Author: Drew Schmidt
+Authors@R: c(person("Drew", "Schmidt", , role=c("aut", "cre"), email="wrathematics@gmail.com"),
+    person("Christian", "Heckendorf", role="ctb"))
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
 URL: https://github.com/wrathematics/timer
 BugReports: https://github.com/wrathematics/timer/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
