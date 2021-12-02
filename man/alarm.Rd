@@ -13,8 +13,10 @@ alarm(timestr)
 A count down until the clock matches the given time(s).
 }
 \examples{
+\dontrun{
 alarm("01:32")
 alarm("14:59:15")
 alarm(c("01:32","14:59:15"))
+}
 
 }

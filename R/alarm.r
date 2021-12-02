@@ -5,9 +5,11 @@
 #' @param timestr Time(s) that the alarm will go off.
 #' 
 #' @examples
+#' \dontrun{
 #' alarm("01:32")
 #' alarm("14:59:15")
 #' alarm(c("01:32","14:59:15"))
+#' }
 #' 
 #' @export
 alarm = function(timestr)
